@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from "uuid";
 
 import { ICreateCategoryDTO } from "@modules/posts/dtos/ICreateCategoryDTO";
-import Category from "@modules/posts/infra/typeorm/entities/Category";
+import { Category } from "@modules/posts/infra/typeorm/entities/Category";
 
 import { ICategoriesRepository } from "../ICategoriesRepository";
 
