@@ -28,6 +28,10 @@ class PostsRepositoryInMemory implements IPostsRepository {
 
     return post;
   }
+
+  async listAll(): Promise<Array<Post>> {
+    return this.posts;
+  }
 }
 
 export { PostsRepositoryInMemory };

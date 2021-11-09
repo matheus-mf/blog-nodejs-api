@@ -7,9 +7,9 @@ class CreatePostController {
   public async handle(request: Request, response: Response): Promise<Response> {
     const { user_id, category_id, title, description } = request.body;
 
-    const createCategoryUseCase = container.resolve(CreatePostUseCase);
+    const createPostUseCase = container.resolve(CreatePostUseCase);
 
-    await createCategoryUseCase.execute({
+    await createPostUseCase.execute({
       user_id,
       category_id,
       title,

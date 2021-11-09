@@ -28,6 +28,10 @@ class PostsRepository implements IPostsRepository {
 
     return post;
   }
+
+  public async listAll(): Promise<Array<Post>> {
+    return this.repository.find({ relations: ["category", "autor"] });
+  }
 }
 
 export { PostsRepository };
