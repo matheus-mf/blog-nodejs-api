@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Blog Documentation",
-    "description": "This is an API Rent",
+    "description": "This is an API Blog",
     "version": "1.0.0",
     "contact": {
       "email": "matheus.cll.g@gmail.com",

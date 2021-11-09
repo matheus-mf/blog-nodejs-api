@@ -41,3 +41,19 @@
 ## Diagramação
 
 ![Esquema banco de dados](.github/diagrama.png)
+
+---
+
+## Migrações
+
+### Para criar
+
+`yarn typeorm migration:generate -n PostRefactoring`
+
+### Para executar
+
+`yarn typeorm migration:run`
+
+### Para reverter
+
+`yarn typeorm migration:run`
