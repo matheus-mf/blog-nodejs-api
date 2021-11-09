@@ -9,6 +9,8 @@ interface IPostsRepository {
     user_id,
   }: ICreatePostDTO): Promise<Post>;
   listAll(): Promise<Array<Post>>;
+  findById(id: string): Promise<Post>;
+  save(post: Post): Promise<Post>;
 }
 
 export { IPostsRepository };

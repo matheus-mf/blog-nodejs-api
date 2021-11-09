@@ -2,23 +2,23 @@ import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memor
 import { CategoriesRepositoryInMemory } from "@modules/posts/repositories/in-memory/CategoriesRepositoryInMemory";
 import { PostsRepositoryInMemory } from "@modules/posts/repositories/in-memory/PotsRepositoryInMemory";
 
-import { ListPostsUseCase } from "./ListPostsUseCase";
+import { UpdatePostUseCase } from "./UpdatePostUseCase";
 
 let postsRepositoryInMemory: PostsRepositoryInMemory;
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
 let usersRepositoryInMemory: UsersRepositoryInMemory;
-let listPostsUseCase: ListPostsUseCase;
+let updatePostUseCase: UpdatePostUseCase;
 
-describe("List Posts", () => {
+describe("Update Post", () => {
   beforeEach(() => {
     postsRepositoryInMemory = new PostsRepositoryInMemory();
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     categoriesRepositoryInMemory = new CategoriesRepositoryInMemory();
 
-    listPostsUseCase = new ListPostsUseCase(postsRepositoryInMemory);
+    updatePostUseCase = new UpdatePostUseCase(postsRepositoryInMemory);
   });
 
-  it("should be able to list all posts", async () => {
+  it("should be able update a post", async () => {
     const user = {
       name: "string",
       email: "user@example.com",
@@ -36,15 +36,21 @@ describe("List Posts", () => {
       category.name
     );
 
-    await postsRepositoryInMemory.create({
+    const postCreated = await postsRepositoryInMemory.create({
       user_id: autor.id,
       category_id: categoryCreated.id,
       description: "description",
       title: "title",
     });
 
-    const posts = await listPostsUseCase.execute();
+    const posts = await updatePostUseCase.execute({
+      id: postCreated.id,
+      title: "update title",
+      description: postCreated.description,
+      category_id: postCreated.category_id,
+      user_id: postCreated.user_id,
+    });
 
-    expect(posts.length).toEqual(1);
+    expect(posts.title).toEqual("update title");
   });
 });

@@ -32,6 +32,20 @@ class PostsRepositoryInMemory implements IPostsRepository {
   async listAll(): Promise<Array<Post>> {
     return this.posts;
   }
+
+  async findById(id: string): Promise<Post> {
+    return this.posts.find((post) => post.id === id);
+  }
+
+  async save(post: Post): Promise<Post> {
+    const findIndex = this.posts.findIndex(
+      (findPost) => findPost.id === post.id
+    );
+
+    this.posts[findIndex] = post;
+
+    return post;
+  }
 }
 
 export { PostsRepositoryInMemory };
