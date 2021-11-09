@@ -24,8 +24,8 @@ describe("List Categories", () => {
     await categoriesRepositoryInMemory.create(category1);
     await categoriesRepositoryInMemory.create(category2);
 
-    const posts = await listCategoriesUseCase.execute();
+    const categories = await listCategoriesUseCase.execute();
 
-    expect(posts.length).toEqual(2);
+    expect(categories.length).toEqual(2);
   });
 });
