@@ -18,6 +18,10 @@ export class CreatePosts1636425599067 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "title",
+            type: "varchar",
+          },
+          {
             name: "user_id",
             type: "uuid",
             isNullable: true,
