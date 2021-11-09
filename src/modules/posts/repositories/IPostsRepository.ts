@@ -8,6 +8,7 @@ interface IPostsRepository {
     category_id,
     user_id,
   }: ICreatePostDTO): Promise<Post>;
+  listAll(): Promise<Array<Post>>;
 }
 
 export { IPostsRepository };
