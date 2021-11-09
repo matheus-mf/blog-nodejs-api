@@ -41,6 +41,10 @@ class PostsRepository implements IPostsRepository {
     console.log(post);
     return this.repository.save(post);
   }
+
+  public async delete(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
 
 export { PostsRepository };

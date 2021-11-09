@@ -46,6 +46,12 @@ class PostsRepositoryInMemory implements IPostsRepository {
 
     return post;
   }
+
+  async delete(id: string): Promise<void> {
+    const findIndex = this.posts.findIndex((findPost) => findPost.id === id);
+
+    this.posts.splice(findIndex, 1);
+  }
 }
 
 export { PostsRepositoryInMemory };
