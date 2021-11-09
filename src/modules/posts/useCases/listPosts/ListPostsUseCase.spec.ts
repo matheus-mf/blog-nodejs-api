@@ -1,7 +1,6 @@
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { CategoriesRepositoryInMemory } from "@modules/posts/repositories/in-memory/CategoriesRepositoryInMemory";
 import { PostsRepositoryInMemory } from "@modules/posts/repositories/in-memory/PotsRepositoryInMemory";
-import AppError from "@shared/errors/AppError";
 
 import { ListPostsUseCase } from "./ListPostsUseCase";
 

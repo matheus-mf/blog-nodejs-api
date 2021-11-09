@@ -32,6 +32,15 @@ class PostsRepository implements IPostsRepository {
   public async listAll(): Promise<Array<Post>> {
     return this.repository.find({ relations: ["category", "autor"] });
   }
+
+  public async findById(id: string): Promise<Post> {
+    return this.repository.findOne(id, { relations: ["category", "autor"] });
+  }
+
+  public async save(post: Post): Promise<Post> {
+    console.log(post);
+    return this.repository.save(post);
+  }
 }
 
 export { PostsRepository };
