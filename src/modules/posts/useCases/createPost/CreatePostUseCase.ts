@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { Post } from "@modules/posts/infra/typeorm/entities/Post";
+import { ICategoriesRepository } from "@modules/posts/repositories/ICategoriesRepository";
 import { IPostsRepository } from "@modules/posts/repositories/IPostsRepository";
 import AppError from "@shared/errors/AppError";
 
@@ -19,7 +20,10 @@ class CreatePostUseCase {
     private postsRepository: IPostsRepository,
 
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+
+    @inject("CategoriesRepository")
+    private categoriesRepository: ICategoriesRepository
   ) {}
 
   public async execute({
@@ -32,6 +36,14 @@ class CreatePostUseCase {
 
     if (!userDoesNotExist) {
       throw new AppError("User does not exist!");
+    }
+
+    const categoryDoesNotExist = await this.categoriesRepository.findById(
+      category_id
+    );
+
+    if (!categoryDoesNotExist) {
+      throw new AppError("Category does not exist!");
     }
 
     return this.postsRepository.create({

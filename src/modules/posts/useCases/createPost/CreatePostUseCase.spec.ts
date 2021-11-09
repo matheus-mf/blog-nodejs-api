@@ -18,7 +18,8 @@ describe("Create Post", () => {
 
     createPostUseCase = new CreatePostUseCase(
       postsRepositoryInMemory,
-      usersRepositoryInMemory
+      usersRepositoryInMemory,
+      categoriesRepositoryInMemory
     );
   });
 
@@ -65,6 +66,24 @@ describe("Create Post", () => {
       createPostUseCase.execute({
         user_id: "user-not-exist",
         category_id: categoryCreated.id,
+        description: "description",
+        title: "title",
+      })
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("should not be able to create a new post when category does not exist", async () => {
+    const user = {
+      name: "John Doe",
+      email: "johndoe@example.com",
+    };
+
+    const userCreated = await usersRepositoryInMemory.create(user);
+
+    await expect(
+      createPostUseCase.execute({
+        user_id: userCreated.id,
+        category_id: "category-not-exist",
         description: "description",
         title: "title",
       })

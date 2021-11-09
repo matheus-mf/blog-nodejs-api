@@ -27,6 +27,10 @@ class CategoriesRepository implements ICategoriesRepository {
       where: { name },
     });
   }
+
+  public async findById(id: string): Promise<Category> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { CategoriesRepository };
