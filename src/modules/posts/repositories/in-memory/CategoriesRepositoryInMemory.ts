@@ -1,3 +1,5 @@
+import { v4 as uuidV4 } from "uuid";
+
 import { ICreateCategoryDTO } from "@modules/posts/dtos/ICreateCategoryDTO";
 import Category from "@modules/posts/infra/typeorm/entities/Category";
 
@@ -14,6 +16,7 @@ class CategoriesRepositoryInMemory implements ICategoriesRepository {
     const category = new Category();
 
     Object.assign(category, {
+      id: uuidV4(),
       name,
     });
 

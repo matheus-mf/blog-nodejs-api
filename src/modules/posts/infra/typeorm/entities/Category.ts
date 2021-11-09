@@ -1,16 +1,15 @@
 import {
-  Entity,
-  PrimaryColumn,
   Column,
   CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
 
 @Entity("categories")
 export default class Category {
-  @PrimaryColumn()
-  id?: string;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   name: string;
@@ -20,10 +19,4 @@ export default class Category {
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
-  }
 }
