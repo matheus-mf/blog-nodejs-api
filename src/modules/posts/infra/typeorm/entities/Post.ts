@@ -23,9 +23,15 @@ class Post {
   @Column()
   title: string;
 
+  @Column()
+  category_id: string;
+
   @ManyToOne(() => Category)
   @JoinColumn({ name: "category_id" })
   category: Category;
+
+  @Column()
+  user_id: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
