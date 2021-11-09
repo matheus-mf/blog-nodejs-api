@@ -5,7 +5,7 @@ import { Category } from "../infra/typeorm/entities/Category";
 interface ICategoriesRepository {
   findByName(name: string): Promise<Category>;
   findById(id: string): Promise<Category>;
-  list(): Promise<Category[]>;
+  listAll(): Promise<Category[]>;
   create({ name }: ICreateCategoryDTO): Promise<void>;
 }
 

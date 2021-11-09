@@ -11,7 +11,7 @@ class CategoriesRepository implements ICategoriesRepository {
     this.repository = getRepository(Category);
   }
 
-  public async list(): Promise<Category[]> {
+  public async listAll(): Promise<Category[]> {
     return this.repository.find();
   }
 

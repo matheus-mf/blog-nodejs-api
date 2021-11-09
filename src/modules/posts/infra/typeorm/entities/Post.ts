@@ -35,7 +35,7 @@ class Post {
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
-  user: User;
+  autor: User;
 
   @CreateDateColumn()
   created_at: Date;

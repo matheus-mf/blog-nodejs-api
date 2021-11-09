@@ -38,6 +38,10 @@ class UsersRepository implements IUsersRepository {
   public async save(user: User): Promise<User> {
     return this.repository.save(user);
   }
+
+  async listAll(): Promise<Array<User>> {
+    return this.repository.find();
+  }
 }
 
 export { UsersRepository };
