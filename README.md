@@ -37,3 +37,7 @@
 `docker-compose down`
 
 ---
+
+## Diagramação
+
+![Esquema banco de dados](.github/diagrama.png)
