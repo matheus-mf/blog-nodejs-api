@@ -34,17 +34,15 @@ class UpdatePostUseCase {
     category_id,
     user_id,
   }: IRequest): Promise<Post> {
-    const userDoesNotExist = await this.usersRepository.findById(user_id);
+    const autor = await this.usersRepository.findById(user_id);
 
-    if (!userDoesNotExist) {
+    if (!autor) {
       throw new AppError("User does not exist!");
     }
 
-    const categoryDoesNotExist = await this.categoriesRepository.findById(
-      category_id
-    );
+    const category = await this.categoriesRepository.findById(category_id);
 
-    if (!categoryDoesNotExist) {
+    if (!category) {
       throw new AppError("Category does not exist!");
     }
 
@@ -59,6 +57,8 @@ class UpdatePostUseCase {
       title,
       category_id,
       user_id,
+      category,
+      autor,
     });
 
     return this.postsRepository.save(post);
